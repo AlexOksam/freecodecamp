@@ -11,13 +11,13 @@ MAIN_MENU()
   ## variable for all available services
   AVAILABLE_SERVICES=$($PSQL "select service_id, name from services order by service_id")
   
-  ## check, have salon any services
+
   if [[ -z $AVAILABLE_SERVICES ]]
   then
-  ## if not have services (table services in databes is empty)
+
   echo "Sorry, we are closed and do not have any services"
   else
-  ## if services ...
+
   echo "$AVAILABLE_SERVICES" | while read SERVICE_ID BAR NAME
     do
     echo "$SERVICE_ID) $NAME"
@@ -35,7 +35,7 @@ MAIN_MENU()
         MAIN_MENU "I could not find that service. What would you like today?" 
         else
         echo -e "\nWhat's your phone number?"
-        # read input from the terminal 
+ 
         read CUSTOMER_PHONE
 
         CUSTOMER_NAME=$($PSQL "select name from customers where phone = '$CUSTOMER_PHONE'")
